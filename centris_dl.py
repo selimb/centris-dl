@@ -40,10 +40,14 @@ def cli(url: str, name: str) -> None:
     driver.get(url)
 
     house_info = driver.find_element_by_class_name("house-info").text
-    description = driver.find_element_by_class_name("description").text
+    features = driver.find_element_by_class_name("description").text
+    description = driver.find_element_by_class_name("property-description").text
     with open(output_dir / "listing.txt", "w") as f:
         f.write(underline("Info"))
         f.write(house_info)
+        f.write("\n")
+        f.write(underline("Features"))
+        f.write(features)
         f.write("\n")
         f.write(underline("Description"))
         f.write(description)
